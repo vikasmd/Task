@@ -22,7 +22,7 @@
   
    }
    .place{
-       color: gray;
+       color:#504F4F;
     font-size: xx-large;
    
    }
@@ -83,6 +83,17 @@ to {transform: rotate(359deg);}
     top: 15%;
     right: 22%;
 }
+tr:nth-child(even) {background: #e8e8e8}
+tr:nth-child(odd) {background: #FFF}
+
+table, th, td {
+   border: 1px solid black;
+}
+.tblfnt{
+color:gray;
+font-family: initial;
+    font-size: 113%;
+}
    </style>
   </head>
   <body ng-controller="detailsController">
@@ -91,16 +102,7 @@ to {transform: rotate(359deg);}
 		<div class="row">
 			<div class = "col-md-5 col-sm-5 place">{{report.name}}</div>
 		</div>
-		<div class = "row">
 		
-			<div class = "col-md-5 col-sm-5">{{date | date:'MMM-dd'}} </div>
-			
-		</div>
-		<div class = "row">
-		
-			<div class = "col-md-5 col-sm-5">{{report.weather[0].description}} </div>
-			
-		</div>
 		
 		<br/>
 		
@@ -114,33 +116,61 @@ to {transform: rotate(359deg);}
 				
 				<span class = "Temp-of-Day"> {{report.main.temp - 273.15}} <sup>o<sub>C</sub></sup> </span>
 			</div>
-			<div class="col-md-5 col-sm-5"></div>
-			<div class="col-md-5 col-sm-5">HIMUDITY : {{report.main.humidity}} %</div>
 			
-			<div class="col-md-5 col-sm-5">Pressure : {{report.main.pressure}} NpM<sup>2</sup></div>
-			
-			<div class="col-md-5 col-sm-5">Wind : {{report.wind.speed}} Km/H</div>
 			
 			
 		</div>
+		<br/>
+		<div class = "row">
 		
-		<div class="row">
-			<div class="col-md-offset-1 col-sm-offset-1">Wind direction : {{report.wind.deg}} <sup>o</sup> </div>
+			<div class = "col-md-5 col-sm-5">{{report.weather[0].description}} </div>
 			
 		</div>
+		<br/>
+		<div class = "row">
 		
-
-		<div class="row">
-			<div class="col-md-offset-1 col-sm-offset-5">MAX Temp : {{report.main.temp_max - 273.15}} <sup>o</sup>C</div>
+			<div class = "col-md-5 col-sm-5">get at {{date | date:"MM/dd/yyyy 'at' h:mma"}} </div>
 			
 		</div>
-		<div class="row">
-			<div class="col-md-offset-1 col-sm-offset-5">MIN Temp : {{report.main.temp_min - 273.15}} <sup>o</sup>C</div>
-			
+		<br/>
+		<div class = "row">
+			<div class = "col-md-5 col-sm-5">
+				<table class="tblFnt" >
+					<tr>
+						<td>Wind</td>
+						<td>{{report.wind.speed}} m/s<br/>NORTH({{360 - report.wind.deg}}) </td>
+					</tr>
+					
+					<tr>
+						<td>Cloudliness</td>
+						<td>{{report.weather[0].main}}</td>
+					</tr>
+					
+					<tr>
+						<td>Pressure</td>
+						<td>{{report.main.pressure}} hpa</td>
+					</tr>
+					
+					<tr>
+						<td>Humidity</td>
+						<td>{{report.main.humidity}} %</td>
+					</tr>
+					
+					<tr>
+						<td>Sunrise</td>
+						<td>{{report.sys.sunrise | date:"hh:mma"}}</td>
+					</tr>
+					<tr>
+						<td>Sunset</td>
+						<td> {{report.sys.sunset | date:"hh:mma"}}</td>
+					</tr>
+					<tr>
+						<td>Geo coords</td>
+						<td style ="color:#FDD094">[{{report.coord.lat}},{{report.coord.lng}}]</td>
+					</tr>
+				</table>
+			</div>
 		</div>
-	
-   
-   
 	
 	</div>
 
