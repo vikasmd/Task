@@ -163,7 +163,7 @@ table, th, td {
 						<img src = "rain_s_cloudy.png" ng-if = "report.weather[0].description == 'scattered showers' || report.weather[0].description == 'scattered thunderstorms' " class="img-size"/>
 						<img src = "sunny.png" ng-if = "report.weather[0].description != 'Scattered Showers' && report.weather[0].description != 'Scattered Thunderstorms' && report.weather[0].description != 'Mostly Sunny' && report.weather[0].description != 'Partly Cloudy' && report.weather[0].description != 'scattered clouds' && report.weather[0].description != 'few clouds' " class="img-size"/>
 						
-						<span class = "Temp-of-Day"> {{report.main.temp - 273.15 | limitTo : 2}} <sup>o<sub>C</sub></sup> </span>
+						<span class = "Temp-of-Day"> {{report.main.temp - 273.15 | number : 2}} <sup>o<sub>C</sub></sup> </span>
 					</div>
 					
 					
